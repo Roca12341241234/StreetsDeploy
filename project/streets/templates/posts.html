@@ -1,0 +1,11 @@
+{% for post in posts %}
+
+<div class="post">
+	<img src="" alt="post image" class="post-img">
+	<div class="post-info">
+		<h3 class="post-title">{{ post.title }}</h3>
+		<p class="post-description">{{ post.description }}</p>
+	</div>
+</div>
+
+{% endfor %}
