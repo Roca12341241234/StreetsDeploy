@@ -1,4 +1,13 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
+	<section class="intro">
+		<p>В рамках работы патриотического клуба студентами ИПО был запущен видеопроект — <b>«Улицы нашего города»</b>. Проект посвящён необычным домам в нашем городе, домам с особой историей, и улицам, названным в честь великих людей.</p>
+		<img class="some-img" src="{% static 'images/intro.jpg' %}">
+	</section>
+
+	<section class="posts">
+		{% include 'posts.html' %}
+	</section>
 {% endblock %}

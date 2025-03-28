@@ -21,25 +21,18 @@
 				<img src="{% static 'images/logo.png' %}" alt="logo" class="logo-image">
 			</div>
 			<div class="nav">
-				<a href="#">Главная</a>
+				<a href="{% url 'index' %}">Главная</a>
 				<a href="#">О проекте</a>
 				<a href="#">Больше проектов</a>
 			</div>
 		</div>
 	</div>
 
-	<div class="content">
-		{% block content %}
-		{% endblock %}
-		<div class="container">
-			<section class="intro">
-				<p>В рамках работы патриотического клуба студентами ИПО был запущен видеопроект — <b>«Улицы нашего города»</b>. Проект посвящён необычным домам в нашем городе, домам с особой историей, и улицам, названным в честь великих людей.</p>
-				<img class="some-img" src="{% static 'images/intro.jpg' %}">
-			</section>
+	<div class="container">
+		<div class="content">
+			{% block content %}
 
-			<section class="posts">
-				{% include 'posts.html' %}
-			</section>
+			{% endblock %}
 		</div>
 	</div>
 
