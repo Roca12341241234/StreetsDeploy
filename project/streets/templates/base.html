@@ -13,42 +13,51 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+	<!-- additional links -->
+	{% block links %}
+	{% endblock %}
 </head>
 <body>
-	<div class="header">
-		<div class="container">
-			<div class="logo">
-				<img src="{% static 'images/logo.png' %}" alt="logo" class="logo-image">
-			</div>
-			<div class="nav">
-				<a href="{% url 'index' %}">Главная</a>
-				<a href="#">О проекте</a>
-				<a href="#">Больше проектов</a>
-			</div>
-		</div>
-	</div>
-
-	<div class="container">
-		<div class="content">
-			{% block content %}
-
-			{% endblock %}
-		</div>
-	</div>
-
-	<div class="footer">
-		<div class="container">
-			<div class="contacts">
-				<div class="vk">
-					<img src="{% static 'images/VK.svg' %}" alt="vk logo">
-					<a href="https://vk.com/mediaclubipo">mediaclubipo</a>
+	<div class="scroll">
+		<div class="header">
+			<div class="container">
+				<div class="logo">
+					<img src="{% static 'images/logo.png' %}" alt="logo" class="logo-image">
+				</div>
+				<div class="nav">
+					<a href="{% url 'index' %}">Главная</a>
+					<a href="#">О проекте</a>
+					<a href="#">Больше проектов</a>
 				</div>
 			</div>
-	
-			<div class="logo">
-				<img src="{% static 'images/logo.png' %}" alt="logo" class="logo-image">
+		</div>
+
+		<div class="container">
+			<div class="content">
+				{% block content %}
+
+				{% endblock %}
+			</div>
+		</div>
+
+		<div class="footer">
+			<div class="container">
+				<div class="contacts">
+					<div class="vk">
+						<img src="{% static 'images/VK.svg' %}" alt="vk logo">
+						<a href="https://vk.com/mediaclubipo">mediaclubipo</a>
+					</div>
+				</div>
+		
+				<div class="logo">
+					<img src="{% static 'images/logo.png' %}" alt="logo" class="logo-image">
+				</div>
 			</div>
 		</div>
 	</div>
+	{% block js %}
+	{% endblock %}
+	<script src="{% static 'js/smooth_scroll.js' %}"></script>
 </body>
 </html>

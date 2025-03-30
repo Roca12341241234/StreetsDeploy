@@ -1,13 +1,61 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{% static '/css/slick/slick.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static '/css/slick/slick-theme.css' %}"/>
+{% endblock %}
+
+
 {% block content %}
 	<section class="intro">
-		<p>В рамках работы патриотического клуба студентами ИПО был запущен видеопроект — <b>«Улицы нашего города»</b>. Проект посвящён необычным домам в нашем городе, домам с особой историей, и улицам, названным в честь великих людей.</p>
+    <div class="intro-info">
+    	<p class="intro-info-text">В рамках работы патриотического клуба студентами ИПО был запущен видеопроект — <b>«Улицы нашего города»</b>. Проект посвящён необычным домам в нашем городе, домам с особой историей, и улицам, названным в честь великих людей.</p>
+    	<div class="btns">
+			{% for category in categories %}
+			<a href="{{ category.get_absolute_url }}" class="btns-category">{{ category.name|upper }}</a>
+			{% endfor %}
+    	</div>
+    </div>
 		<img class="some-img" src="{% static 'images/intro.jpg' %}">
 	</section>
 
 	<section class="posts">
 		{% include 'posts.html' %}
 	</section>
+{% endblock %}
+
+
+{% block js %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'js/slick/slick.min.js' %}"></script>
+<script type="text/javascript">
+$('.posts').slick({
+  dots: true,
+  infinite: true,
+  speed: 300,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 2000,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
+});
+</script>
 {% endblock %}

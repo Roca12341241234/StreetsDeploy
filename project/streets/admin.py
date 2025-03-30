@@ -1,7 +1,13 @@
 from django.contrib import admin
-from .models import Posts, ImagesPost
+from .models import Posts, ImagesPost, Categories
 
 
-# Register your models here.
-admin.site.register(Posts)
+class PostsAdmin(admin.ModelAdmin):
+	prepopulated_fields = {'slug': ('title',)}
+
+class CategoriesAdmin(admin.ModelAdmin):
+	prepopulated_fields = {'slug': ('name',)}
+
+admin.site.register(Posts, PostsAdmin)
 admin.site.register(ImagesPost)
+admin.site.register(Categories, CategoriesAdmin)

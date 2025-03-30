@@ -1,9 +1,9 @@
 {% for post in posts %}
 
 <div class="post">
-	<img src="{{ post.preview.url }}" alt="post image" class="post-img">
+	<img src="{{ post.preview.url }}" loading="lazy" alt="post image" class="post-img">
 	<div class="post-info">
-		<a class="post-title" href="{%  %}">{{ post.title }}</a>
+		<a class="post-title" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
 		<p class="post-description">{{ post.description }}</p>
 	</div>
 </div>

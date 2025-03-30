@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
+{% for post in posts %}
 <h1>{{ post.title }}</h1>
-{{ post.content|safe }}
+<p>{{ post.description }}</p>
+{% endfor %}
 {% endblock %}
