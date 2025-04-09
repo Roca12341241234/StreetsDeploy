@@ -3,7 +3,9 @@ from .models import Posts, ImagesPost, Categories
 
 
 class PostsAdmin(admin.ModelAdmin):
-	prepopulated_fields = {'slug': ('title',)}
+	pass
+	# fields = ['title', 'description', 'content', 'preview', 'category', 'is_published']
+	# prepopulated_fields = {'slug': ('title',)}
 
 class CategoriesAdmin(admin.ModelAdmin):
 	prepopulated_fields = {'slug': ('name',)}

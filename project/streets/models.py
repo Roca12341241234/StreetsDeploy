@@ -1,5 +1,10 @@
 from django.db import models
 from django.urls import reverse
+from django.utils.text import slugify
+
+from django_extensions.db.fields import AutoSlugField
+
+import pytils
 
 
 class Categories(models.Model):
@@ -23,31 +28,39 @@ class Posts(models.Model):
 	description = models.TextField(verbose_name='Краткое описание')
 	content = models.TextField(verbose_name='Контент')
 	preview = models.ImageField(verbose_name='Картинка для превью', upload_to='photos/')
-	slug = models.SlugField(verbose_name='Слаг', unique=True, max_length=255, db_index=True)
+	slug = AutoSlugField(
+		verbose_name='Слаг',
+		unique=True, 
+		max_length=255, 
+		db_index=True, 
+		populate_from='title',
+		slugify_function=lambda a: pytils.translit.slugify(a))
+	is_published = models.BooleanField(verbose_name='Опубликовано?', default=True)
 
 	category = models.ForeignKey(Categories, on_delete=models.CASCADE, blank=True, null=True, related_name='category_posts')
 
-	is_published = models.BooleanField(verbose_name='Опубликовано?', default=True)
 
 	def __str__(self):
 		return self.title
 	
-
+	def get_absolute_url(self):
+		return reverse('post', kwargs={'post_slug': self.slug})
+	
 	class Meta:
 		verbose_name = 'Пост'
 		verbose_name_plural = 'Посты'
 
-	def get_absolute_url(self):
-		return reverse('post', kwargs={'post_slug': self.slug})
-	
 
 class ImagesPost(models.Model):
 	post = models.ForeignKey(Posts, on_delete=models.CASCADE, blank=True, null=True, related_name='images')
-	image = models.ImageField(verbose_name='Картинка', upload_to=f'photos/')
+	image = models.ImageField(verbose_name='Картинка', upload_to='photos/')
+
 
 	def __str__(self):
 		return self.post.title
-
+	
+	# def get_absolute_url(self):
+	# 	return reverse('image', kwargs={'image_name': self.image})
 
 	class Meta:
 		verbose_name = 'Картинка'

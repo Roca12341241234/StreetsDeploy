@@ -3,4 +3,9 @@
 {% block content %}
 <h1>{{ post.title }}</h1>
 {{ post.content|safe }}
+{% if images %}
+	{% for image in images %}
+	<img src="{{ image.url }}" alt="">
+	{% endfor %}
+{% endif %}
 {% endblock %}
