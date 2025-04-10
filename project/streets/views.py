@@ -44,10 +44,7 @@ def add_post(request):
 				preview=form.cleaned_data['preview'],
 				category=form.cleaned_data['category']
 			)
-			print(form.cleaned_data)
 			new_post.save()
-
-			# return HttpResponseRedirect('/add_post/')
 	else:
 		form = AddPostForm()
 
