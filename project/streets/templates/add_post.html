@@ -7,10 +7,10 @@
 
 {% block content %}
 
-<form action="" method="POST" enctype="multipart/form-data">
+<form action="" method="POST" enctype="multipart/form-data" class="add_post_form">
 	{% csrf_token %}
 	{{ form }}
-	<input type="submit" value="Создать пост">
+	<button>Создать пост</button>
 	
 </form>
 

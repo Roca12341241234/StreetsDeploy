@@ -1,27 +1,37 @@
-form {
-	display: flex;
-	flex-direction: column;
-	max-width: 500px;
-	width: 100%;
-	gap: 30px;
-}
-
 .content {
-	display: flex;
-	flex-direction: column;
 	align-items: center;
 }
 
-.item {
-	display: flex;
-	align-items: end;
-	/* gap: 5px; */
-}
-
-input, textarea, select {
-	width: 100%;
+input[type="text"], textarea {
 }
 
 label {
+	font-size: 1.4em;
+	font-weight: 800;
+}
+
+.add_post_form {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	width: 100%;
+	gap: 30px;
+	/* background-color: rgba(0,0,0,0.1); */
+	/* padding: 20px; */
+}
+
+.form_item {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	background-color: rgba(0,0,0,0.1);
+	border-radius: 10px;
+	padding: 10px;
+	margin-top: 10px;
+
+}
+
+.form_description, .form_content {
+	resize: none;
+	overflow-y: auto;
 }

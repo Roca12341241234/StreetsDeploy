@@ -35,7 +35,7 @@ class Posts(models.Model):
 		db_index=True, 
 		populate_from='title',
 		slugify_function=lambda a: pytils.translit.slugify(a))
-	is_published = models.BooleanField(verbose_name='Опубликовано?', default=True)
+	is_published = models.BooleanField(verbose_name='Опубликовать', default=True)
 
 	category = models.ForeignKey(Categories, on_delete=models.CASCADE, blank=True, null=True, related_name='category_posts')
 
