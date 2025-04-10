@@ -15,14 +15,11 @@ def index(request):
 	posts = Posts.objects.filter(is_published=True)
 	categories = Categories.objects.all()
 
-	print(posts[0].preview.__dict__)
-	
 	return render(request, 'index.html', {'categories': categories, 'posts': posts})
 
 def post(request, post_slug):
 	_post = Posts.objects.get(slug=post_slug)
 	images = ImagesPost.objects.filter(post = _post)
-	print(images[0].__dict__)
 	
 	return render(request, 'post.html', {'post': _post, 'images': images})
 
