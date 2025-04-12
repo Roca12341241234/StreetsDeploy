@@ -2,6 +2,8 @@ from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
 
+from django_ckeditor_5.fields import CKEditor5Field
+
 from django_extensions.db.fields import AutoSlugField
 
 import pytils
@@ -26,7 +28,8 @@ class Categories(models.Model):
 class Posts(models.Model):
 	title = models.CharField(verbose_name='Заголовок', max_length=255)
 	description = models.TextField(verbose_name='Краткое описание')
-	content = models.TextField(verbose_name='Контент')
+	# content = models.TextField(verbose_name='Контент')
+	content = CKEditor5Field(verbose_name='Контент')
 	preview = models.ImageField(verbose_name='Картинка для превью', upload_to='photos/')
 	slug = AutoSlugField(
 		verbose_name='Слаг',
