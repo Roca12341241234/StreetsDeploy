@@ -4,4 +4,4 @@ __pycache__/
 *.log
 .env
 media/
-*.sqlite3
+db.sqlite3
