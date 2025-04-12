@@ -9,6 +9,7 @@
 
 <form action="" method="POST" enctype="multipart/form-data" class="add_post_form">
 	{% csrf_token %}
+	{{ form.media }}
 	{{ form }}
 	<button>Создать пост</button>
 	

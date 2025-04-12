@@ -19,7 +19,11 @@
 	{% endblock %}
 </head>
 <body>
+	{% if scroll %}
 	<div class="scroll">
+	{% else %}
+	<div>
+	{% endif %}
 		<div class="header">
 			<div class="container">
 				<div class="logo">

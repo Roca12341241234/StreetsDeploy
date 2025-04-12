@@ -49,4 +49,7 @@ const loop = () => {
 	}
 };
 
-init();
+if (wrapper) {
+	init();
+
+}
