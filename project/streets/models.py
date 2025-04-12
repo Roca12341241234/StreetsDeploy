@@ -62,10 +62,17 @@ class ImagesPost(models.Model):
 	def __str__(self):
 		return self.post.title
 	
-	# def get_absolute_url(self):
-	# 	return reverse('image', kwargs={'image_name': self.image})
-
 	class Meta:
 		verbose_name = 'Картинка'
 		verbose_name_plural = 'Картинки'
 
+class VideosPost(models.Model):
+	post = models.ForeignKey(Posts, on_delete=models.CASCADE, blank=True, null=True, related_name='videos')
+	video = models.FileField(verbose_name='Видео', upload_to='videos/')
+
+	def __str__(self):
+		return self.post.title
+
+	class Meta:
+		verbose_name = 'Видео'
+		verbose_name_plural = 'Видео'
