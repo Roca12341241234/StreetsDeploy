@@ -69,6 +69,7 @@ class ImagesPost(models.Model):
 class VideosPost(models.Model):
 	post = models.ForeignKey(Posts, on_delete=models.CASCADE, blank=True, null=True, related_name='videos')
 	video = models.FileField(verbose_name='Видео', upload_to='videos/')
+	description = models.TextField(verbose_name='Краткое описание видео(необязательно)', max_length=255, blank=True, null=True)
 
 	def __str__(self):
 		return self.post.title
