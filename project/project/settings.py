@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'streets',
 	'django_extensions',
 	'djrichtextfield',
-	'django_ckeditor_5'
 ]
 
 MIDDLEWARE = [
@@ -133,12 +132,118 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # STATIC_ROOT = '' # это уже когда к серверу придем
 # CKEDITOR_BASEPATH = STATIC_URL + "ckeditor/ckeditor/"
 
-CKEDITOR_5_IMAGE_BACKEND = 'Pillow'
-CKEDITOR_5_UPLOAD_PATH = '/photos/'
+# CKEDITOR_5_IMAGE_BACKEND = 'Pillow'
+# CKEDITOR_5_UPLOAD_PATH = '/photos/'
 
-CKEDITOR_5_CONFIGS = {
+# CKEDITOR_5_CONFIGS = {
+#     'default': {
+# 		'language': 'ru',
+# 		'heading': {
+#             'options': [
+#                 {'model': 'paragraph', 'title': 'Параграф', 'class': 'ck-heading_paragraph'},
+#                 {'model': 'heading1', 'view': 'h1', 'title': 'Заголовок 1', 'class': 'ck-heading_heading1'},
+#                 {'model': 'heading2', 'view': 'h2', 'title': 'Заголовок 2', 'class': 'ck-heading_heading2'},
+#                 {'model': 'heading3', 'view': 'h3', 'title': 'Заголовок 3', 'class': 'ck-heading_heading3'},
+#                 {'model': 'heading4', 'view': 'h4', 'title': 'Заголовок 4', 'class': 'ck-heading_heading4'},
+#                 {'model': 'heading5', 'view': 'h5', 'title': 'Заголовок 5', 'class': 'ck-heading_heading5'},
+#                 {'model': 'heading6', 'view': 'h6', 'title': 'Заголовок 6', 'class': 'ck-heading_heading6'},
+#             ]
+#         },
+#         'toolbar': [
+# 			'heading', '|',
+# 			'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', '|', 
+# 			'bold', 'italic', 'underline','|',
+# 			'link', 'insertImage', 'ckbox', 'mediaEmbed', 'insertTable', 'insertTableLayout', 'blockQuote', '|',
+# 			'outdent', 'indent'
+#         ],
+# 		'balloonToolbar': ['bold', 'italic', '|', 'link', 'insertImage'],
+# 		'heading': {
+#             'options': [
+#                 {
+#                     'model': 'paragraph',
+#                     'title': 'Paragraph',
+#                     'class': 'ck-heading_paragraph'
+#                 },
+#                 {
+#                     'model': 'heading1',
+#                     'view': 'h1',
+#                     'title': 'Heading 1',
+#                     'class': 'ck-heading_heading1'
+#                 },
+#                 {
+#                     'model': 'heading2',
+#                     'view': 'h2',
+#                     'title': 'Heading 2',
+#                     'class': 'ck-heading_heading2'
+#                 },
+#                 {
+#                     'model': 'heading3',
+#                     'view': 'h3',
+#                     'title': 'Heading 3',
+#                     'class': 'ck-heading_heading3'
+#                 },
+#                 {
+#                     'model': 'heading4',
+#                     'view': 'h4',
+#                     'title': 'Heading 4',
+#                     'class': 'ck-heading_heading4'
+#                 },
+#                 {
+#                     'model': 'heading5',
+#                     'view': 'h5',
+#                     'title': 'Heading 5',
+#                     'class': 'ck-heading_heading5'
+#                 },
+#                 {
+#                     'model': 'heading6',
+#                     'view': 'h6',
+#                     'title': 'Heading 6',
+#                     'class': 'ck-heading_heading6'
+#                 }
+#             ]
+#         },
+# 		'image': {
+#             'toolbar': [
+#                 'toggleImageCaption', 'imageTextAlternative', '|',
+#                 'imageStyle:inline', 'imageStyle:wrapText', 'imageStyle:breakText', '|',
+#                 'resizeImage', '|',
+#                 'ckboxImageEdit'
+#             ]
+# 	    },
+#         'table': {
+#             'contentToolbar': ['tableColumn', 'tableRow', 'mergeTableCells', 'tableProperties', 'tableCellProperties']
+#         },
+# 		'link': {
+#             'addTargetToExternalLinks': 'true',
+#             'defaultProtocol': 'https://',
+#             'decorators': {
+#                 'toggleDownloadable': {
+#                     'mode': 'manual',
+#                     'label': 'Downloadable',
+#                     'attributes': {
+#                         'download': 'file'
+#                     }
+#                 }
+#             }
+# 	    },
+#         'placeholder': 'Пишите здесь пост...'
+# 	},
+# }
+
+CKEDITOR_IMAGE_BACKEND = 'Pillow'
+CKEDITOR_UPLOAD_PATH = '/photos/'
+
+CKEDITOR_CONFIGS = {
     'default': {
 		'language': 'ru',
+        # 'toolbar': [
+		# 	'heading', '|',
+		# 	'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', '|', 
+		# 	'bold', 'italic', 'underline','|',
+		# 	'link', 'insertImage', 'ckbox', 'mediaEmbed', 'insertTable', 'insertTableLayout', 'blockQuote', '|',
+		# 	'outdent', 'indent'
+        # ],
+		'toolbar': 'full',
 		'heading': {
             'options': [
                 {'model': 'paragraph', 'title': 'Параграф', 'class': 'ck-heading_paragraph'},
@@ -150,25 +255,82 @@ CKEDITOR_5_CONFIGS = {
                 {'model': 'heading6', 'view': 'h6', 'title': 'Заголовок 6', 'class': 'ck-heading_heading6'},
             ]
         },
-        'toolbar': [
-            # 'items': ['Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates', 
-			# 		  'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo',
-			# 		  'Find', 'Replace', '-', 'SelectAll', 
-			# 		  'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 
-			# 		  'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat', 
-			# 		  'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
-            #            'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl',
-            #            'Language', 'Link', 'Unlink', 'Anchor', 
-			# 		   'Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe',
-			# 		   'Styles', 'Format', 'Font', 'FontSize',
-			# 		   'TextColor', 'BGColor',
-			# 		   'Maximize', 'ShowBlocks', 
-			# 		   'About'],
-			'heading', '|', 'bold', 'italic', 'underline', '|',
-			'link', 'uploadImage', 'mediaEmbed'
-        ],
-		'mediaEmbed': {
-            'previewsInData': True
-        }
-    }
+		'balloonToolbar': ['bold', 'italic', '|', 'link', 'insertImage'],
+		'heading': {
+            'options': [
+                {
+                    'model': 'paragraph',
+                    'title': 'Paragraph',
+                    'class': 'ck-heading_paragraph'
+                },
+                {
+                    'model': 'heading1',
+                    'view': 'h1',
+                    'title': 'Heading 1',
+                    'class': 'ck-heading_heading1'
+                },
+                {
+                    'model': 'heading2',
+                    'view': 'h2',
+                    'title': 'Heading 2',
+                    'class': 'ck-heading_heading2'
+                },
+                {
+                    'model': 'heading3',
+                    'view': 'h3',
+                    'title': 'Heading 3',
+                    'class': 'ck-heading_heading3'
+                },
+                {
+                    'model': 'heading4',
+                    'view': 'h4',
+                    'title': 'Heading 4',
+                    'class': 'ck-heading_heading4'
+                },
+                {
+                    'model': 'heading5',
+                    'view': 'h5',
+                    'title': 'Heading 5',
+                    'class': 'ck-heading_heading5'
+                },
+                {
+                    'model': 'heading6',
+                    'view': 'h6',
+                    'title': 'Heading 6',
+                    'class': 'ck-heading_heading6'
+                }
+            ]
+        },
+		'image': {
+            'toolbar': [
+                'toggleImageCaption', 'imageTextAlternative', '|',
+                'imageStyle:inline', 'imageStyle:wrapText', 'imageStyle:breakText', '|',
+                'resizeImage', '|',
+                'ckboxImageEdit'
+            ]
+	    },
+        'table': {
+            'contentToolbar': ['tableColumn', 'tableRow', 'mergeTableCells', 'tableProperties', 'tableCellProperties']
+        },
+		'link': {
+            'addTargetToExternalLinks': 'true',
+            'defaultProtocol': 'https://',
+            'decorators': {
+                'toggleDownloadable': {
+                    'mode': 'manual',
+                    'label': 'Downloadable',
+                    'attributes': {
+                        'download': 'file'
+                    }
+                }
+            }
+	    },
+        'placeholder': 'Пишите здесь пост...'
+	},
+}
+
+TINYMCE_DEFAULT_CONFIG = {
+    'plugins': "image,style,list,advimage,styleprops",
+    'toolbar': "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image | styleprops",
+    'advimage_styles': 'float:left; margin: 0 10px 10px 0px; | float:right; margin: 0 0 10px 10px;',
 }
