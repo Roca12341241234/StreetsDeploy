@@ -17,6 +17,9 @@
 	<!-- additional links -->
 	{% block links %}
 	{% endblock %}
+
+	{% block additional %}
+	{% endblock %}
 </head>
 <body>
 	{% if scroll %}
@@ -60,6 +63,7 @@
 			</div>
 		</div>
 	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	{% block js %}
 	{% endblock %}
 	<script src="{% static 'js/smooth_scroll.js' %}"></script>
