@@ -23,7 +23,7 @@ from . import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
 	path('', include('streets.urls')),
-	path('ckeditor5/', include('django_ckeditor_5.urls'), name='ck_editor_5_upload_file'),
+	
 ]
 
 if settings.DEBUG:
