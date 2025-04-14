@@ -1,8 +1,7 @@
+from turtle import mode
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
-
-from django_ckeditor_5.fields import CKEditor5Field
 
 from django_extensions.db.fields import AutoSlugField
 
@@ -28,16 +27,10 @@ class Categories(models.Model):
 class Posts(models.Model):
 	title = models.CharField(verbose_name='Заголовок', max_length=255)
 	description = models.TextField(verbose_name='Краткое описание')
-	# content = models.TextField(verbose_name='Контент')
-	content = CKEditor5Field(verbose_name='Контент')
+
+	content = models.TextField(verbose_name='Контент')
 	preview = models.ImageField(verbose_name='Картинка для превью', upload_to='photos/')
-	slug = AutoSlugField(
-		verbose_name='Слаг',
-		unique=True, 
-		max_length=255, 
-		db_index=True, 
-		populate_from='title',
-		slugify_function=lambda a: pytils.translit.slugify(a))
+	slug = AutoSlugField(verbose_name='Слаг',unique=True, max_length=255, db_index=True, populate_from='title', slugify_function=lambda a: pytils.translit.slugify(a))
 	is_published = models.BooleanField(verbose_name='Опубликовать', default=True)
 
 	category = models.ForeignKey(Categories, on_delete=models.CASCADE, blank=True, null=True, related_name='category_posts')
