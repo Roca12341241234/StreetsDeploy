@@ -131,10 +131,66 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
 TINYMCE_JS_URL = 'https://cdn.tiny.cloud/1/8jeqw6p63k34mfpoj1fa9suzvp5eep8xejkxivn60s7ara6k/tinymce/5/tinymce.min.js'
 TINYMCE_COMPRESSOR = False
 TINYMCE_DEFAULT_CONFIG = {
-    'plugins': "image,style,list,advimage,styleprops",
-    'toolbar': "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image | styleprops",
-    'advimage_styles': 'float:left; margin: 0 10px 10px 0px; | float:right; margin: 0 0 10px 10px;',
+    'width': '100%',
+	'height': 500,
+	'min-height': 500,
+    'menubar': False,
+
+    'plugins': 'autoresize image table media code preview fullscreen link lists',
+    'toolbar': 'undo redo | blocks fontselect fontsizeselect | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image table media | forecolor backcolor removeformat | code fullscreen preview',
+
+    'forced_root_block': False,
+	'image_dimensions': False,
+	
+    'font_family_formats': 'Andale Mono=andale mono,times; Arial=arial,helvetica,sans-serif; Book Antiqua=book antiqua,palatino; Courier New=courier new,courier; Georgia=georgia,palatino; Helvetica=helvetica; Impact=impact,chicago; Tahoma=tahoma,arial,helvetica,sans-serif; Terminal=terminal,monaco; Times New Roman=times new roman,times; Trebuchet MS=trebuchet ms,geneva; Verdana=verdana,geneva;',
+    'block_formats': 'Paragraph=p; Heading 1=h1; Heading 2=h2; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6;',
+    'menubar': 'file edit view insert format tools table help',
+    'image_caption': True,
+    'image_advtab': True,
+    'image_dimensions': False,
+	'content_style': 'img { max-width: 100%; height: auto; }',
+	'toolbar_mode': 'wrap',
+    'file_picker_types': 'image',
+	'file_picker_callback': '''
+        function (cb, value, meta) {
+            var input = document.createElement('input');
+            input.setAttribute('type', 'file');
+            input.setAttribute('accept', 'image/*');
+
+            /*
+            Note: In modern browsers input[type="file"] is functional without
+            even adding it to the DOM, but that might not be the case in some older
+            or quirky browsers like IE, so you might want to add it to the DOM
+            just in case, and visually hide it. And do not forget do remove it
+            once you do not need it anymore.
+            */
+
+            input.onchange = function () {
+            var file = this.files[0];
+
+            var reader = new FileReader();
+            reader.onload = function () {
+                /*
+                Note: Now we need to register the blob in TinyMCEs image blob
+                registry. In the next release this part hopefully won't be
+                necessary, as we are looking to handle it internally.
+                */
+                var id = 'blobid' + (new Date()).getTime();
+                var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+                var base64 = reader.result.split(',')[1];
+                var blobInfo = blobCache.create(id, file, base64);
+                blobCache.add(blobInfo);
+
+                /* call the callback and populate the Title field with the file name */
+                cb(blobInfo.blobUri(), { title: file.name });
+            };
+        reader.readAsDataURL(file);
+        };
+
+        input.click();
+        }'''
 }
