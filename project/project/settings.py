@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'streets',
 	'django_extensions',
 	'djrichtextfield',
+	
+    'tinymce'
 ]
 
 MIDDLEWARE = [
