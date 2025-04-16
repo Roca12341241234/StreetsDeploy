@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/tinymce/content.css' %}">
+{% endblock %}
 
 {% block content %}
 <h1>{{ post.title }}</h1>
-{{ post.content|safe }}
+
+<div class="mce-content-body">
+	{{ post.content|safe }}
+</div>
 {% endblock %}
