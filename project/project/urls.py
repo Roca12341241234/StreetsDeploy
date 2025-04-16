@@ -23,7 +23,7 @@ from . import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
 	path('', include('streets.urls')),
-	
+	path('tinymce/', include('tinymce.urls')),
 ]
 
 if settings.DEBUG:
