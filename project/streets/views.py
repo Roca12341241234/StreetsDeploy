@@ -9,7 +9,7 @@ def index(request):
 	posts = Posts.objects.filter(is_published=True)
 	categories = Categories.objects.all()
 
-	return render(request, 'index.html', {'categories': categories, 'posts': posts, 'scroll': True})
+	return render(request, 'index.html', {'categories': categories, 'slider_posts': posts[:5], 'scroll': True})
 
 def post(request, post_slug):
 	_post = Posts.objects.get(slug=post_slug)
@@ -33,6 +33,3 @@ def add_post(request):
 		form = AddPostForm()
 
 	return render(request, 'add_post.html', {'form': form, 'scroll': False})
-
-def upload_video(request):
-	video = request.FILES.upload_files[0]
