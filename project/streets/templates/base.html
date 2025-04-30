@@ -8,6 +8,7 @@
 	<title>Улицы нашего города</title>
 
 	<link rel="stylesheet" href="{% static 'css/index.css' %}">
+	<link rel="stylesheet" href="{% static 'css/adaptive_base.css' %}">
 
 	<!-- fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +20,7 @@
 	{% block head %}
 	{% endblock %}
 </head>
-<body>
+<body style="height: 100%;">
 	{% if scroll %}
 	<div class="scroll">
 	{% else %}
@@ -30,10 +31,17 @@
 				<div class="logo">
 					<img src="{% static 'images/logo.png' %}" alt="logo" class="logo-image">
 				</div>
+				<button class="burger-btn" aria-label="Открыть меню">
+					<span class="burger-line"></span>
+					<span class="burger-line"></span>
+					<span class="burger-line"></span>
+				</button>
 				<div class="nav">
-					<a href="{% url 'index' %}">Главная</a>
-					<a href="#">О проекте</a>
-					<a href="#">Больше проектов</a>
+					<div class="nav-list">
+						<a href="{% url 'index' %}">Главная</a>
+						<a href="#">О проекте</a>
+						<a href="#">Больше проектов</a>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -54,6 +62,9 @@
 						<a target="_blank" href="https://vk.com/mediaclubipo">mediaclubipo</a>
 					</div>
 				</div>
+				
+
+				<div class="footer-info">для проекта <a href="https://kuzstu.ru/" target="_blank">КузГТУ</a></div>
 		
 				<div class="logo">
 					<img src="{% static 'images/logo.png' %}" alt="logo" class="logo-image">
@@ -65,6 +76,7 @@
 	{% block js %}
 	{% endblock %}
 	<script src="{% static 'js/smooth_scroll.js' %}"></script>
+	<script src="{% static 'js/burger-menu.js' %}"></script>
 </body>
 </html>
 
