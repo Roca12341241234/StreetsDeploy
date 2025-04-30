@@ -1,0 +1,45 @@
+.slider-post {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	user-select: none;
+
+	width: 33.33%;
+
+	margin: 10px;
+
+	overflow-wrap: break-word;
+	overflow: hidden;
+}
+
+.slider-post-title {
+	font-weight: 400;
+	font-size: 1.3em;
+	line-height: 1.3em;
+	color: var(--title);
+	cursor: pointer;
+}
+.slider-post-title:hover {
+	color: var(--title);
+}
+
+.slider-post-description {
+	margin-top: 10px;
+	font-size: 0.9em;
+	line-height: 1.5em;
+
+}
+
+.slider-post-img {
+	height: 200px;
+	justify-self: center;
+	object-fit: cover;
+	display: block;
+}
+
+.slider-post-info {
+	padding: 15px;
+	justify-self: center;
+	max-width: 315px;
+
+}
