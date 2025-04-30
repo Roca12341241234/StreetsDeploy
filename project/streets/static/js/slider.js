@@ -8,21 +8,21 @@ const runSlider = (selector) => {
 		slidesToScroll: 1,
 		autoplay: true,
 		autoplaySpeed: 2000,
+		variableWidth: false,
+		centerMode: false,
 		responsive: [
 		  {
-			breakpoint: 1024,
+			breakpoint: 1000,
 			settings: {
 			  slidesToShow: 2,
 			  slidesToScroll: 1,
-			  infinite: true,
-			  dots: true
 			}
 		  },
 		  {
-			breakpoint: 600,
+			breakpoint: 630,
 			settings: {
-			  slidesToShow: 1,
-			  slidesToScroll: 1
+				slidesToShow: 1,
+				arrows: false,
 			}
 		  }
 		]
