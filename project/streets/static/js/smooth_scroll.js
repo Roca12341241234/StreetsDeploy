@@ -50,6 +50,9 @@ const loop = () => {
 };
 
 if (wrapper) {
-	init();
+	const width = window.innerWidth;
 
+	if (width > 1200) {
+		init();
+	}
 }
