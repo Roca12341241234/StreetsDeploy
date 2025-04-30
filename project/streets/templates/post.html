@@ -8,6 +8,11 @@
 {% block content %}
 <h1>{{ post.title }}</h1>
 
+{% if post.video %}
+<video controls width="100%">
+	<source src="{{ post.video.url }}">
+</video>
+{% endif %}
 <div class="mce-content-body">
 	{{ post.content|safe }}
 </div>
