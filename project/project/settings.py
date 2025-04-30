@@ -194,3 +194,7 @@ TINYMCE_DEFAULT_CONFIG = {
         input.click();
         }'''
 }
+
+
+
+allowed_extensions_for_video_files = ['.mp4', '.mov', '.avi', '.mkv']
