@@ -4,30 +4,39 @@
 {% block head %}
 <link rel="stylesheet" type="text/css" href="{% static '/css/slick/slick.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static '/css/slick/slick-theme.css' %}"/>
+
+<link rel="stylesheet" href="{% static 'css/adaptive_index.css' %}">
+<link rel="stylesheet" href="{% static 'css/slider_posts.css' %}">
+
 {% endblock %}
 
 
 {% block content %}
 	<section class="intro">
-    <div class="intro-info">
-    	<p class="intro-info-text">В рамках работы патриотического клуба студентами ИПО был запущен видеопроект — <b>«Улицы нашего города»</b>. Проект посвящён необычным домам в нашем городе, домам с особой историей, и улицам, названным в честь великих людей.</p>
-    	<div class="btns">
+		<img class="intro-img" src="{% static 'images/intro.jpg' %}">
+		<p class="intro-info-text">В рамках работы патриотического клуба студентами ИПО был запущен видеопроект — <b>«Улицы нашего города»</b>. Проект посвящён необычным домам в нашем городе, домам с особой историей, и улицам, названным в честь великих людей.</p>
+		<div class="intro-btns">
 			{% for category in categories %}
-			<a href="{{ category.get_absolute_url }}" class="btns-category">{{ category.name|upper }}</a>
+			<a href="{{ category.get_absolute_url }}" class="btn">{{ category.name|upper }}</a>
 			{% endfor %}
-    	</div>
-    </div>
-		<img class="some-img" src="{% static 'images/intro.jpg' %}">
+		</div>
 	</section>
 
-	<section class="posts">
-		{% include 'posts.html' %}
+	<section class="slider-posts">
+		{% include 'slider_posts.html' %}
 	</section>
+
+	<a class="btn more-posts" href="#">БОЛЬШЕ ПОСТОВ</a>
+
 {% endblock %}
 
 
 {% block js %}
 <script type="text/javascript" src="{% static 'js/slick/slick.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/slider.js' %}"></script>
-<script type="text/javascript">runSlider('.posts');</script>
+<script type="text/javascript">
+
+
+runSlider('.slider-posts');
+</script>
 {% endblock %}

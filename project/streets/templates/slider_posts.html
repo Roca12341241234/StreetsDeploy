@@ -1,0 +1,18 @@
+{% load static %}
+
+{% block head %}
+{% endblock %}
+
+{% for post in slider_posts %}
+
+<div class="slider-post">
+	<img src="{{ post.preview.url }}" loading="lazy" alt="post image" class="slider-post-img">
+	<div class="slider-post-info">
+		<a class="slider-post-title" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+		<p class="slider-post-description">{{ post.description }}</p>
+	</div>
+</div>
+
+{% endfor %}
+
+
