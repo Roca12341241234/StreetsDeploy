@@ -1,13 +1,59 @@
-{% for post in posts %}
+{% extends 'base.html' %}
+{% load static %}
 
-<div class="post">
-	<img src="{{ post.preview.url }}" loading="lazy" alt="post image" class="post-img">
-	<div class="post-info">
-		<a class="post-title" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-		<p class="post-description">{{ post.description }}</p>
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/card_posts.css' %}">
+<link rel="stylesheet" href="{% static 'css/adaptive_posts.css' %}">
+<link rel="stylesheet" href="{% static 'css/posts.css' %}">
+{% endblock %}
+
+{% block content %}
+
+	{% if posts %}
+		<div class="title">Посты</div>
+		<div class="posts">
+			{% for post in posts %}
+				<div class="card-post">
+					<h2 class="post-title"><a href="{{ post.get_absolute_url }}" class="">{{ post.title }}</a></h2>
+					
+					<img class="post-img" src="{{ post.preview.url }}" alt="post image">
+					<div class="post-info">
+						<h4 class="post-info-title">{{ post.title }}</h4>
+						<p class="post-description">{{ post.description }}</p>
+						<a href="{{ post.get_absolute_url }}" class="btn post-btn">СМОТРЕТЬ</a>
+						<div class="post-meta-info">
+							<div class="post-create-date">
+								<i class='bx bxs-calendar'></i><p>{{ post.date_create|date:"d.m.Y" }}</p>
+							</div>
+							<div class="post-views">
+								<i class='bx bxs-show' ></i><p>{{ post.views }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	{% else %}
+		<div class="title">Не найдено постов по такому запросу</div>
+	{% endif %}
+	
+	<div class="filters">
+		<!-- <div class="search">
+			<h2>Поиск</h2>
+			<form action="" method="GET" class="search-form">
+				{{ search_form.as_p }}
+				<input class="btn" type="submit" value="Найти">
+			</form>
+		</div> -->
+
+		<div class="filters-by">
+			<h2>Фильтры</h2>
+			<form action="" method="GET" class="filters-by-form">
+				{{ filters_form.as_p }}
+
+				<input class="btn" type="submit" value="Применить">
+			</form>
+
+		</div>
 	</div>
-</div>
-
-{% endfor %}
-
-
+{% endblock %}

@@ -1,0 +1,64 @@
+html {
+	background-color: var(--seashell);
+}
+
+.content {
+	display: grid;
+	grid-template-areas: 
+		"title filters"
+		"posts filters";
+	grid-template-columns: 3fr 1.2fr;
+	grid-template-rows: 1fr auto;
+	grid-gap: 20px;
+
+}
+
+
+.title {
+	grid-area: title;
+	
+	background-color: #fff;
+	color: var(--dark-gray);
+	padding: 20px;
+	font-size: 1.5em;
+	font-weight: 800;
+}
+
+.posts {
+	grid-area: posts;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.filters {
+	grid-area: filters;
+
+	width: 100%;
+	height: min-content;
+	background-color: #fff;
+	padding: 20px;
+
+	color: var(--dark-gray);
+
+	position: sticky;
+    top: 20px; 
+}
+.filters h2 {
+	font-size: 1.5em;
+	margin-bottom: 5px;
+}
+.filters p {
+	font-size: 1em;
+}
+.filters .btn:hover {
+	background-color: var(--gray);
+	color: #fff;
+}
+
+.filters-by-form, .search-form {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}

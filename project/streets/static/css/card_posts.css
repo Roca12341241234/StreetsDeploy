@@ -1,0 +1,128 @@
+/* .posts {
+    width: 100%;
+}
+
+.card-post {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 20px;
+
+    width: 100%;
+    min-height: 180px;
+
+    padding: 20px;
+    margin: 20px 0;
+	
+    border: 1px solid var(--gray);
+}
+
+.post-img {
+    width: 250px;
+    height: 180px;
+    object-fit: fill;
+}
+
+.post-info {
+    flex: 1;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.post-description {
+	align-self: flex-start;
+}
+
+.post-btn {
+    display: block;
+    align-self: end;
+} */
+
+
+.card-post {
+	width: 100%;
+	background-color: #fff;
+	padding: 20px;
+	margin-bottom: 20px;
+
+	display: flex;
+	flex-direction: column;
+	
+	/* width: 80%; */
+
+	gap: 20px;
+}
+
+.card-post:last-child {
+	margin-bottom: 0;
+}
+
+.post-img {
+	width: 100%;
+	object-fit: cover;
+}
+
+
+.post-info {
+	display: block;
+}
+
+.post-title {
+	font-size: 1.5em;
+	font-weight: 600;
+	color: var(--dark-gray);
+}
+
+.post-title a {
+	color: var(--dark-gray);
+	transition: 0.5s ease-in-out;
+}
+.post-title a:hover {
+	color: var(--gray);
+}
+
+.post-info-title {
+	font-size: 1.1em;
+	font-weight: 500;
+	color: var(--dark-gray);
+}
+
+.post-description {
+	margin-top: 20px;
+	/* color: #000; */
+	font-weight: 400;
+	font-size: 1em;
+}
+
+.post-btn {
+	margin-top: 15px;
+	justify-self: flex-start;
+}
+.post-btn:hover {
+	background-color: var(--gray);
+	color: #fff;
+}
+
+.post-meta-info {
+	margin-top: 25px;
+	font-weight: 400;
+	color: var(--gray);
+
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+.post-meta-info div {
+	display: flex;
+	align-items: center;
+	gap: 3px;
+}
+
+.post-meta-info i, p {
+	font-size: 0.8em;
+}
+.post-meta-info i {
+	font-size: 1em;
+}
