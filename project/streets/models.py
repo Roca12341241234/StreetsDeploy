@@ -34,6 +34,7 @@ class Posts(models.Model):
 	preview = models.ImageField(verbose_name='Картинка для превью', upload_to='photos/')
 	date_create = models.DateField(verbose_name='Дата создания поста', auto_now_add=True, blank=True, null=True)
 	date_update = models.DateField(verbose_name='Дата обновления поста', auto_now=True, blank=True, null=True)
+	views = models.IntegerField(verbose_name='Просмотры', default=0, null=True, blank=True)
 	video = models.FileField(verbose_name='Видео', upload_to='videos/', blank=True, null=True)
 	slug = AutoSlugField(verbose_name='Слаг',unique=True, max_length=255, db_index=True, populate_from='title', slugify_function=lambda a: pytils.translit.slugify(a))
 	is_published = models.BooleanField(verbose_name='Опубликовать', default=True)
