@@ -19,3 +19,29 @@ class AddPostForm(forms.ModelForm):
 				raise forms.ValidationError("Разрешены только видеофайлы (MP4, MOV, AVI, MKV).")
 			
 		return video_file
+	
+class PostFilterForm(forms.Form):
+	search_query = forms.CharField(
+		label='Поиск по заголовку',
+		required=False,
+		max_length=255,
+		widget=forms.TextInput(attrs={'placeholder': 'Введите сюда запрос...'})
+	)
+	date = forms.ChoiceField(
+		required=False, 
+		label="По дате",
+		choices=[("", "Не выбрано"), (0, 'По убыванию'), (1, 'По возрастанию')],
+		widget=forms.Select(attrs={'class': 'filters-by-date'})
+	)
+	views = forms.ChoiceField(
+		required=False, 
+		label="По просмотрам",
+		choices=[("", "Не выбрано"), (0, 'По убыванию'), (1, 'По возрастанию')],
+		widget=forms.Select(attrs={'class': 'filters-by-views'})
+	)
+	category = forms.ChoiceField(
+		required=False,
+		label="Категория",
+		choices=[("", "Все")] + [(cat.id, cat.name) for cat in Categories.objects.all()],
+		widget=forms.Select(attrs={'class': 'filters-by-category'})
+	)
