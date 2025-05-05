@@ -1,9 +1,8 @@
 .env/
 venv/
+.vscode/
 __pycache__/
 *.log
-.env
-media/
 node_modules/
 package.json
 package-lock.json
