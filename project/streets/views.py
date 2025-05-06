@@ -16,7 +16,7 @@ def post(request, post_slug):
 	_post.views+=1
 	_post.save()
 
-	return render(request, 'post.html', {'post': _post, 'scroll': True})
+	return render(request, 'post.html', {'post': _post, 'scroll': False})
 
 def category(request, category_slug):
 	posts = get_object_or_404(Categories, slug=category_slug)
