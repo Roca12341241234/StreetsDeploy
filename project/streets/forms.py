@@ -42,6 +42,11 @@ class PostFilterForm(forms.Form):
 	category = forms.ChoiceField(
 		required=False,
 		label="Категория",
-		choices=[("", "Все")] + [(cat.id, cat.name) for cat in Categories.objects.all()],
+		choices=[("", "Все")],
 		widget=forms.Select(attrs={'class': 'filters-by-category'})
 	)
+
+	def __init__(self, *args, **kwargs):
+		super().__init__(*args, **kwargs)
+		for cat in Categories.objects.all():
+			self.fields['category'].choices += [(str(cat.id), cat.name, )]
