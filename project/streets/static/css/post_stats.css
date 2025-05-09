@@ -1,0 +1,21 @@
+.post-meta-info {
+	margin-top: 25px;
+	font-weight: 400;
+	color: var(--gray);
+
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+.post-meta-info div {
+	display: flex;
+	align-items: center;
+	gap: 3px;
+}
+
+.post-meta-info i, p {
+	font-size: 0.8em;
+}
+.post-meta-info i {
+	font-size: 1em;
+}
