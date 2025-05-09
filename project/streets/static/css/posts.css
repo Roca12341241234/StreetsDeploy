@@ -8,7 +8,7 @@ html {
 		"title filters"
 		"posts filters";
 	grid-template-columns: 3fr 1.2fr;
-	grid-template-rows: 1fr auto;
+	grid-template-rows: auto auto;
 	grid-gap: 20px;
 
 }
@@ -18,10 +18,11 @@ html {
 	grid-area: title;
 	
 	background-color: #fff;
-	color: var(--dark-gray);
+	color: var(--dark-gray-text);
 	padding: 20px;
 	font-size: 1.5em;
 	font-weight: 800;
+	height: auto;
 }
 
 .posts {
@@ -40,7 +41,7 @@ html {
 	background-color: #fff;
 	padding: 20px;
 
-	color: var(--dark-gray);
+	color: var(--dark-gray-text);
 
 	position: sticky;
     top: 20px; 

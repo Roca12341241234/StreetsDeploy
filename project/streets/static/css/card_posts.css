@@ -72,11 +72,11 @@
 .post-title {
 	font-size: 1.5em;
 	font-weight: 600;
-	color: var(--dark-gray);
+	color: var(--dark-gray-text);
 }
 
 .post-title a {
-	color: var(--dark-gray);
+	color: var(--dark-gray-text);
 	transition: 0.5s ease-in-out;
 }
 .post-title a:hover {
@@ -86,7 +86,7 @@
 .post-info-title {
 	font-size: 1.1em;
 	font-weight: 500;
-	color: var(--dark-gray);
+	color: var(--dark-gray-text);
 }
 
 .post-description {
@@ -105,24 +105,3 @@
 	color: #fff;
 }
 
-.post-meta-info {
-	margin-top: 25px;
-	font-weight: 400;
-	color: var(--gray);
-
-	display: flex;
-	align-items: center;
-	gap: 20px;
-}
-.post-meta-info div {
-	display: flex;
-	align-items: center;
-	gap: 3px;
-}
-
-.post-meta-info i, p {
-	font-size: 0.8em;
-}
-.post-meta-info i {
-	font-size: 1em;
-}
