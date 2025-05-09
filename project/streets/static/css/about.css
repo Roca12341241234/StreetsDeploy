@@ -1,0 +1,93 @@
+section {
+    margin-bottom: 50px;
+}
+
+.about-container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--dark-gray-text);
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+ p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: var(--gray);
+}
+
+.about-participants .participant-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.about-participants .participant-card {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    width: calc(33.33% - 20px);
+    box-sizing: border-box;
+}
+
+.about-additional a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.about-additional p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.about-additional ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.about-additional li {
+    margin-bottom: 8px;
+}
+
+.about-additional a:hover {
+    text-decoration: underline;
+}
+
+/* {% block content %}
+<div class="about-this-site">
+	<h2>Об этом сайте</h2>
+	<p>Данный проект представляет собой сайт для проекта "{{ project_name }}".</p>
+	<p>Он нужен для удобного размещения и просмотра тематических постов.</p>
+	<p>Разработчик сайта: студент КузГТУ, СПО <b>Павлов Кирилл</b>.</p>
+	<p>Сайт Представляет собой индивидуальный проект по информатике.</p>
+</div>
+
+<div class="about-streets-our-city">
+	<h2>О проекте "Улицы нашего города"</h2>
+	<p class="intro">{{ project_text|safe }}</p>
+	<div class="info">
+		<div class="name-header">Участники</div>
+		<div class="participants">
+			<div class="name">Морзаков Александр</div>
+			<div class="name">Фандеева Алена</div>
+			<div class="name">Матевосян Нораил</div>
+			<div class="name">Черкасов Егор</div>
+			<div class="name">Гордымов Иван</div>
+			<div class="name">Топорков Евгений</div>
+			<div class="name">Жужгина Дарья</div>
+			<div class="name">Ковыляева Арина</div>
+			<div class="name">Безносова Виктория</div>
+			<div class="name">Денисенко Анастасия</div>
+		</div>
+	</div>
+</div>
+{% endblock %} */
