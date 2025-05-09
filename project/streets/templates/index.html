@@ -15,10 +15,10 @@
 {% block content %}
 	<section class="intro">
 		<img class="intro-img" src="{% static 'images/intro.jpg' %}">
-		<p class="intro-info-text">В рамках работы патриотического клуба студентами ИПО был запущен видеопроект — <b>«Улицы нашего города»</b>. Проект посвящён необычным домам в нашем городе, домам с особой историей, и улицам, названным в честь великих людей.</p>
+		<p class="intro-info-text">{{ project_text|safe }}</p>
 		<div class="intro-btns">
 			{% for category in categories %}
-			<a href="{{ category.get_absolute_url }}" class="btn">{{ category.name|upper }}</a>
+			<a href="posts?category={{ category.id }}" class="btn">{{ category.name|upper }}</a>
 			{% endfor %}
 		</div>
 	</section>
