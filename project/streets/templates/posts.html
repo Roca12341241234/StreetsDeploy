@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="{% static 'css/card_posts.css' %}">
 <link rel="stylesheet" href="{% static 'css/adaptive_posts.css' %}">
 <link rel="stylesheet" href="{% static 'css/posts.css' %}">
+<link rel="stylesheet" href="{% static 'css/post_stats.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -21,20 +22,13 @@
 						<h4 class="post-info-title">{{ post.title }}</h4>
 						<p class="post-description">{{ post.description }}</p>
 						<a href="{{ post.get_absolute_url }}" class="btn post-btn">СМОТРЕТЬ</a>
-						<div class="post-meta-info">
-							<div class="post-create-date">
-								<i class='bx bxs-calendar'></i><p>{{ post.date_create|date:"d.m.Y" }}</p>
-							</div>
-							<div class="post-views">
-								<i class='bx bxs-show' ></i><p>{{ post.views }}</p>
-							</div>
-						</div>
+						{% include 'post_stats.html' %}
 					</div>
 				</div>
 			{% endfor %}
 		</div>
 	{% else %}
-		<div class="title">Не найдено постов по такому запросу!</div>
+		<div class="title">Нету таких постов</div>
 	{% endif %}
 	
 	<div class="filters">
@@ -51,7 +45,7 @@
 			<form action="" method="GET" class="filters-by-form">
 				{{ filters_form.as_p }}
 
-				<input class="btn" type="submit" value="Применить">
+				<input class="btn" type="submit" value="ПРИМЕНИТЬ">
 			</form>
 
 		</div>
