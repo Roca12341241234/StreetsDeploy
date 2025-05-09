@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 	
     'streets',
+	'config',
 	'django_extensions',
 	'djrichtextfield',
 	
