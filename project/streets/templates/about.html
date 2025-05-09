@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+<link rel="stylesheet" href="{% static 'css/adaptive_about.css' %}">
+{% endblock %}
+
+
+
+
+{% block content %}
+<div class="container about-container">
+	<section class="about-site">
+		<h2>О сайте</h2>
+		<p>
+			Данный проект представляет собой сайт для проекта «<b>{{ project_name }}</b>»
+			Он нужен для удобного размещения и просмотра тематических постов.
+		</p>
+		<p>
+			Сайт представляет собой индивидуальный проект по информатике.
+		</p>	
+		<p>
+			Разработчик сайта: Павлов Кирилл
+		</p>
+		
+	</section>
+
+	<section class="about-project">
+		<h2>О проекте "{{ project_name }}"</h2>
+		<p>
+			{{project_text|safe}}
+		</p>
+	</section>
+
+	<section class="about-participants">
+		<h2>Участники проекта</h2>
+		<div class="participant-list">
+			{% for participant in participants %}
+				<div class="participant-card">
+					<h3>{{participant.last_name}} {{ participant.first_name }}</h3>
+				</div>
+			{% endfor %}
+			</div>
+	</section>
+
+	<section class="about-additional">
+		<h2>Дополнительная информация</h2>
+		<p>
+		</p>
+		<ul>
+			<li><a href="https://kuzstu.ru/">Ссылка на сайт КузГТУ</a></li>
+			<li><a href="https://vk.com/mediaclubipo">Ссылка на медиаклуб ИПО</a></li>
+		</ul>
+	</section>
+</div>
+{% endblock %}
