@@ -242,5 +242,3 @@ form {
 .burger-btn.active .burger-line:nth-child(3) {
 	transform: translateY(-8px) rotate(-45deg);
 }
-
-

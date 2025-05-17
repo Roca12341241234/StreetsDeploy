@@ -14,7 +14,7 @@
 
 {% block content %}
 	<section class="intro">
-		<img class="intro-img" src="{% static 'images/intro.jpg' %}">
+		<img class="intro-img" src="{{ project_preview.url }}">
 		<p class="intro-info-text">{{ project_text|safe }}</p>
 		<div class="intro-btns">
 			{% for category in categories %}

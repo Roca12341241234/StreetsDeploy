@@ -6,8 +6,11 @@ from .models import Posts, Categories, ImagesPost
 from .forms import AddPostForm, PostFilterForm
 from config.models import DefaultConfig, Participants
 
-default_config = DefaultConfig.objects.get()
-default_context = model_to_dict(default_config)
+try:
+	default_config = DefaultConfig.objects.get()
+	default_context = model_to_dict(default_config)
+except:
+	default_context = {}
 
 
 def index(request):
@@ -41,7 +44,7 @@ def add_post(request):
 	return render(request, 'add_post.html', {**default_context, 'form': form, 'scroll': False})
 
 def posts(request):
-	_posts = Posts.objects.get_queryset()
+	_posts = Posts.objects.all()
 	filters_form = PostFilterForm(data=request.GET)
 
 	if filters_form.is_valid():
@@ -49,9 +52,6 @@ def posts(request):
 		date = filters_form.cleaned_data.get('date')
 		views = filters_form.cleaned_data.get('views')
 		search_query = filters_form.cleaned_data.get('search_query')
-
-		if search_query:
-			_posts = _posts.filter(title__icontains=search_query)
 
 		if category:
 			_posts = _posts.filter(category=category)
@@ -65,6 +65,9 @@ def posts(request):
 			_posts = _posts.order_by('-views')
 		elif views == '1':
 			_posts = _posts.order_by('views')
+
+		if search_query:
+			_posts = _posts.filter(title__icontains=search_query)
 
 	
 	return render(request, 'posts.html', {**default_context, 'filters_form': filters_form, 'posts': _posts, 'scroll': False})
