@@ -2,9 +2,9 @@ from django.shortcuts import render, HttpResponse, get_object_or_404, redirect, 
 from django.utils.text import slugify
 from django.forms.models import model_to_dict
 
-from .models import Posts, Categories, ImagesPost
+from .models import Post, Category
 from .forms import AddPostForm, PostFilterForm
-from config.models import DefaultConfig, Participants
+from config.models import DefaultConfig, Participant
 
 try:
 	default_config = DefaultConfig.objects.get()
@@ -14,20 +14,20 @@ except:
 
 
 def index(request):
-	posts = Posts.objects.filter(is_published=True)
-	categories = Categories.objects.all()
+	posts = Post.objects.filter(is_published=True)
+	categories = Category.objects.all()
 
 	return render(request, 'index.html', {**default_context, 'categories': categories, 'posts': posts[:5], 'scroll': True})
 
 def post(request, post_slug):
-	_post = Posts.objects.get(slug=post_slug)
+	_post = Post.objects.get(slug=post_slug)
 	_post.views+=1
 	_post.save()
 
 	return render(request, 'post.html', {**default_context, 'post': _post, 'scroll': False})
 
 def category(request, category_slug):
-	posts = get_object_or_404(Categories, slug=category_slug)
+	posts = get_object_or_404(Category, slug=category_slug)
 	posts = posts.category_posts.all()
 
 	return render(request, 'category_posts.html', {**default_context, 'posts': posts, 'scroll': True})
@@ -44,7 +44,7 @@ def add_post(request):
 	return render(request, 'add_post.html', {**default_context, 'form': form, 'scroll': False})
 
 def posts(request):
-	_posts = Posts.objects.all()
+	_posts = Post.objects.all()
 	filters_form = PostFilterForm(data=request.GET)
 
 	if filters_form.is_valid():
@@ -69,10 +69,14 @@ def posts(request):
 		if search_query:
 			_posts = _posts.filter(title__icontains=search_query)
 
-	
-	return render(request, 'posts.html', {**default_context, 'filters_form': filters_form, 'posts': _posts, 'scroll': False})
+	return render(request, 
+			   'posts.html', 
+			   {**default_context, 
+	   			'filters_form': filters_form,
+				'posts': _posts, 'scroll': False
+			})
 
 def about(request):
-	participants = Participants.objects.all()
+	participants = Participant.objects.all()
 
 	return render(request, 'about.html', {**default_context, 'participants': participants})

@@ -1,12 +1,12 @@
 from django import forms
-from .models import Posts, Categories
+from .models import Post, Category
 
 from project.settings import allowed_extensions_for_video_files
 
 
 class AddPostForm(forms.ModelForm):
 	class Meta:
-		model = Posts
+		model = Post
 		fields = '__all__'
 	
 	def clean_video(self):
@@ -48,5 +48,5 @@ class PostFilterForm(forms.Form):
 
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
-		for cat in Categories.objects.all():
+		for cat in Category.objects.all():
 			self.fields['category'].choices += [(str(cat.id), cat.name, )]

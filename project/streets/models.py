@@ -10,7 +10,7 @@ from tinymce.models import HTMLField
 import pytils
 
 
-class Categories(models.Model):
+class Category(models.Model):
 	name = models.CharField(verbose_name='Название категории', unique=True, max_length=255)
 	slug = models.SlugField(verbose_name='Слаг', max_length=255, unique=True, db_index=True)
 
@@ -26,7 +26,7 @@ class Categories(models.Model):
 		verbose_name_plural = 'Категории'
 
 
-class Posts(models.Model):
+class Post(models.Model):
 	title = models.CharField(verbose_name='Заголовок', max_length=255)
 	description = models.TextField(verbose_name='Краткое описание')
 
@@ -36,10 +36,19 @@ class Posts(models.Model):
 	date_update = models.DateField(verbose_name='Дата обновления поста', auto_now=True)
 	views = models.IntegerField(verbose_name='Просмотры', default=0)
 	video = models.FileField(verbose_name='Видео', upload_to='videos/')
-	slug = AutoSlugField(verbose_name='Слаг',unique=True, max_length=255, db_index=True, populate_from='title', slugify_function=lambda a: pytils.translit.slugify(a))
+	slug = AutoSlugField(
+		verbose_name='Слаг',
+		unique=True,
+		max_length=255, 
+		db_index=True, 
+		populate_from='title', 
+		slugify_function=lambda a: pytils.translit.slugify(a))
 	is_published = models.BooleanField(verbose_name='Опубликовать', default=True)
 
-	category = models.ForeignKey(verbose_name='Категория поста', to=Categories, on_delete=models.CASCADE, related_name='category_posts')
+	category = models.ForeignKey(verbose_name='Категория поста', 
+							  to=Category, 
+							  on_delete=models.CASCADE, 
+							  related_name='category_posts')
 
 
 	def __str__(self):
@@ -52,27 +61,3 @@ class Posts(models.Model):
 		verbose_name = 'Пост'
 		verbose_name_plural = 'Посты'
 
-
-class ImagesPost(models.Model):
-	post = models.ForeignKey(Posts, on_delete=models.CASCADE, blank=True, null=True, related_name='images')
-	image = models.ImageField(verbose_name='Картинка', upload_to='photos/')
-
-
-	def __str__(self):
-		return self.post.title
-	
-	class Meta:
-		verbose_name = 'Картинка'
-		verbose_name_plural = 'Картинки'
-
-class VideosPost(models.Model):
-	post = models.ForeignKey(Posts, on_delete=models.CASCADE, blank=True, null=True, related_name='videos')
-	video = models.FileField(verbose_name='Видео', upload_to='videos/')
-	description = models.TextField(verbose_name='Краткое описание видео(необязательно)', max_length=255, blank=True, null=True)
-
-	def __str__(self):
-		return self.post.title
-
-	class Meta:
-		verbose_name = 'Видео'
-		verbose_name_plural = 'Видео'

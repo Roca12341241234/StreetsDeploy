@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Posts, ImagesPost, Categories
+from .models import Post, Category
 from .forms import AddPostForm
 
 
@@ -14,6 +14,5 @@ class CategoriesAdmin(admin.ModelAdmin):
 	prepopulated_fields = {'slug': ('name',)}
 
 
-admin.site.register(Posts, PostsAdmin)
-admin.site.register(ImagesPost)
-admin.site.register(Categories, CategoriesAdmin)
+admin.site.register(Post, PostsAdmin)
+admin.site.register(Category, CategoriesAdmin)
