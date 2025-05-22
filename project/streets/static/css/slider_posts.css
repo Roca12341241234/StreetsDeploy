@@ -5,7 +5,6 @@
 	user-select: none;
 
 	width: 33.33%;
-
 	margin: 10px;
 
 	overflow-wrap: break-word;
@@ -32,8 +31,9 @@
 
 .slider-post-img {
 	height: 200px;
+	width: 400px;
 	justify-self: center;
-	object-fit: cover;
+	object-fit: fill;
 	display: block;
 }
 
@@ -41,5 +41,4 @@
 	padding: 15px;
 	justify-self: center;
 	max-width: 315px;
-
 }

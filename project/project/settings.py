@@ -155,18 +155,16 @@ TINYMCE_JS_URL = 'https://cdn.tiny.cloud/1/8jeqw6p63k34mfpoj1fa9suzvp5eep8xejkxi
 TINYMCE_COMPRESSOR = False
 TINYMCE_DEFAULT_CONFIG = {
     'width': '100%',
-	'height': 500,
-	'min-height': 500,
-    'menubar': False,
+	'height': '800px',
 
-    'plugins': 'autoresize image table media code preview fullscreen link lists',
-    'toolbar': 'undo redo | blocks fontselect fontsizeselect | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image table media | forecolor backcolor removeformat | code fullscreen preview',
+    'plugins': 'format image table media code preview fullscreen link lists',
+    'toolbar': 'undo redo | formatselect blocks fontselect fontsizeselect | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image table media | forecolor backcolor removeformat | code fullscreen preview',
+    'block_formats': 'Paragraph=p; Heading 1=h1; Heading 2=h2; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6;',
 
     'forced_root_block': False,
 	'image_dimensions': False,
 	
     'font_family_formats': 'Andale Mono=andale mono,times; Arial=arial,helvetica,sans-serif; Book Antiqua=book antiqua,palatino; Courier New=courier new,courier; Georgia=georgia,palatino; Helvetica=helvetica; Impact=impact,chicago; Tahoma=tahoma,arial,helvetica,sans-serif; Terminal=terminal,monaco; Times New Roman=times new roman,times; Trebuchet MS=trebuchet ms,geneva; Verdana=verdana,geneva;',
-    'block_formats': 'Paragraph=p; Heading 1=h1; Heading 2=h2; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6;',
     'menubar': 'file edit view insert format tools table help',
     'image_caption': True,
     'image_advtab': True,

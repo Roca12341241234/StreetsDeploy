@@ -17,7 +17,13 @@ def index(request):
 	posts = Post.objects.filter(is_published=True)
 	categories = Category.objects.all()
 
-	return render(request, 'index.html', {**default_context, 'categories': categories, 'posts': posts[:5], 'scroll': True})
+	return render(request, 
+			   'index.html', 
+			   {**default_context, 
+				'categories': categories, 
+				'posts': posts[:5], 
+				'scroll': True} 
+			)
 
 def post(request, post_slug):
 	_post = Post.objects.get(slug=post_slug)
