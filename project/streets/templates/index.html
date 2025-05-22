@@ -18,21 +18,22 @@
 		<p class="intro-info-text">{{ project_text|safe }}</p>
 		<div class="intro-btns">
 			{% for category in categories %}
-			<a href="posts?category={{ category.id }}" class="btn">{{ category.name|upper }}</a>
+				<a 
+					href="posts?category={{ category.id }}" 
+					class="btn">
+					{{ category.name|upper }}
+				</a>
 			{% endfor %}
 		</div>
 	</section>
 
-	<h1>Популярные посты</h1>
-
+	<div class="slider-posts-header">Популярные посты</div>
 	<section class="slider-posts">
 		{% include 'slider_posts.html' %}
 	</section>
-
+	
 	<a class="btn more-posts" href="{% url 'posts' %}">БОЛЬШЕ ПОСТОВ</a>
-
 {% endblock %}
-
 
 {% block js %}
 <script type="text/javascript" src="{% static 'js/slick/slick.min.js' %}"></script>
